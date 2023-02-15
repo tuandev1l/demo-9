@@ -29,5 +29,5 @@ runs:
       run: npm ci
       shell: bash
     - name: Log
-      run: echo "${{ outputs.used-cache }}"
+      run: echo "${{ inputs.caching }}"
       shell: bash
