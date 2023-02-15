@@ -53,6 +53,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Install Dependencies
+        uses: ./.github/workflows/actions/caches-deps
       - name: Get build artifacts
         uses: actions/download-artifact@v3
         with:
