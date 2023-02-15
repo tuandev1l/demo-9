@@ -59,7 +59,7 @@ jobs:
         id: in-deps
         uses: ./.github/workflows/actions/caches-deps
       - name: Log
-        run: echo "${{ in-deps.outputs.used-cache }}"
+        run: echo "${{ steps.deploy.in-deps.outputs.used-cache }}"
       - name: Get build artifacts
         uses: actions/download-artifact@v3
         with:
