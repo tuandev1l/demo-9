@@ -9,13 +9,13 @@ inputs:
 outputs:
   used-cache:
     description: 'Whether cash was used'
-    value: steps.log.outputs.used-cache
+    value: steps.log.outputs.cache
 runs:
   using: 'composite'
   steps:
     - name: Log
       id: log
-      run: echo "used-cache=${{ inputs.caching }}" >> $GITHUB_OUTPUT
+      run: echo "cache=${{ inputs.caching }}" >> $GITHUB_OUTPUT
       shell: bash
     - name: Cache dependencies
       if: inputs.caching == 'true'
