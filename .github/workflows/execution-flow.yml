@@ -75,4 +75,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Using JS file
-        uses: ./.github/workflows/deploy-s3-js
+        uses: ./.github/workflows/actions/deploy-s3-js
