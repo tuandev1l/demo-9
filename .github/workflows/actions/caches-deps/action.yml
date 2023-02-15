@@ -6,6 +6,10 @@ inputs:
     required: false
     # must be string
     default: 'true'
+outputs:
+  used-cache:
+    description: 'Whether cash was used'
+    value: inputs.caching
 runs:
   using: 'composite'
   steps:

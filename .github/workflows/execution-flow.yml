@@ -54,7 +54,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Dependencies
+        id: in-deps
         uses: ./.github/workflows/actions/caches-deps
+      - name: Log
+        run: echo "${{ in-deps.outputs.used-cache }}"
       - name: Get build artifacts
         uses: actions/download-artifact@v3
         with:
