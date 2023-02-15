@@ -1,9 +1,18 @@
 name: 'Get and Cache Dependencies'
 description: 'Get dependencies and cache them'
+inputs:
+  caching:
+    description: 'Whether to cache dependencies or not'
+    required: false
+    # string
+    default: 'true'
 runs:
   using: 'composite'
   steps:
+    - name: Log
+      run: echo "${{ inputs.caching }}"
     - name: Cache dependencies
+      if: inputs.caching == 'true'
       id: cache
       uses: actions/cache@v3
       with:
