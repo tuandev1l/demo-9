@@ -31,40 +31,46 @@ jobs:
         with:
           name: test-report
           path: test.json
-  build:
-    needs: test
+  # build:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get code
+  #       uses: actions/checkout@v3
+  #     - name: Install Dependencies
+  #       uses: ./.github/workflows/actions/caches-deps
+  #       with:
+  #         caching: 'true'
+  #     - name: Build website
+  #       id: build-website
+  #       run: npm run build
+  #     - name: Upload artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: dist-files
+  #         path: dist
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get code
+  #       uses: actions/checkout@v3
+  #     - name: Install Dependencies
+  #       id: in-deps
+  #       uses: ./.github/workflows/actions/caches-deps
+  #     - name: Log
+  #       run: echo "${{ steps.in-deps.outputs.used-cache }}"
+  #     - name: Get build artifacts
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: dist-files
+  #     - name: Output contents
+  #       run: ls
+  #     - name: Deploy
+  #       run: echo "Deploying..."
+
+  infomation:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install Dependencies
-        uses: ./.github/workflows/actions/caches-deps
-        with:
-          caching: 'true'
-      - name: Build website
-        id: build-website
-        run: npm run build
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist-files
-          path: dist
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install Dependencies
-        id: in-deps
-        uses: ./.github/workflows/actions/caches-deps
-      - name: Log
-        run: echo "${{ steps.in-deps.outputs.used-cache }}"
-      - name: Get build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: dist-files
-      - name: Output contents
-        run: ls
-      - name: Deploy
-        run: echo "Deploying..."
+      - name: Using JS file
+        uses: ./.github/workflows/deploy-s3-js
