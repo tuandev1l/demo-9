@@ -1,0 +1,5 @@
+name: 'Get and Cache Dependencies'
+description: 'Get dependencies and cache them'
+runs:
+  using: 'node16'
+  main: 'index.js'
