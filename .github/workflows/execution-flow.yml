@@ -22,8 +22,8 @@ jobs:
       - name: Install Dependencies
         uses: ./.github/workflows/actions/caches-deps
         with:
-          caching: true
-          shell: bash
+          caching: 'true'
+          # shell: bash
       - name: Test code
         id: run-tests
         # continue-on-error: true
